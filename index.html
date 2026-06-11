@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WANTED: Дикий Запад в Костышах 2026</title>
+
+    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Шрифты: Rye (для заголовков), Санс-вестерн (для акцентов) и четкий пергаментный шрифт -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Rye&family=Ewert&family=Special+Elite&display=swap" rel="stylesheet">
+
+    
+
+    <style>
+
+        /* Атмосферный бэкграунд: темное выжженное дерево */
+
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            background-color: #1a0f05;
+
+            background-image: 
+
+                radial-gradient(circle at 50% 50%, rgba(0,0,0,0.2), rgba(0,0,0,0.9)),
+
+                url('https://www.transparenttextures.com/patterns/dark-wood.png');
+
+            color: #2b1a09;
+
+            font-family: 'Special Elite', monospace; /* Стилизация под печатную машинку шерифа */
+
+            font-size: 18px;
+
+        }
+
+
+
+        .container {
+
+            max-width: 900px;
+
+            margin: 50px auto;
+
+            padding: 0 20px;
+
+            position: relative;
+
+        }
+
+
+
+        /* Эффект сквозных дыр от пуль на фоне */
+
+        .bullet-hole {
+
+            position: absolute;
+
+            width: 35px;
+
+            height: 35px;
+
+            background: radial-gradient(circle, #000 20%, #222 40%, transparent 60%);
+
+            border: 2px dashed rgba(255,255,255,0.1);
+
+            border-radius: 50%;
+
+            opacity: 0.7;
+
+            pointer-events: none;
+
+            z-index: 10;
+
+        }
+
+        .bh1 { top: 20px; left: -10px; }
+
+        .bh2 { top: 250px; right: -15px; }
+
+        .bh3 { bottom: 400px; left: -20px; }
+
+
+
+        /* Постер WANTED с эффектом обгоревших/рваных краев */
+
+        .poster {
+
+            background-color: #e6caa3;
+
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+
+            border: 4px solid #4a2a0c;
+
+            outline: 12px solid #e6caa3;
+
+            outline-offset: -20px;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), inset 0 0 100px rgba(74, 42, 12, 0.4);
+
+            padding: 60px 40px;
+
+            text-align: center;
+
+            border-radius: 4px;
+
+            position: relative;
+
+            /* Рваный край */
+
+            clip-path: polygon(
+
+                0% 0%, 5% 1%, 10% 0%, 25% 2%, 40% 0%, 55% 1%, 70% 0%, 85% 3%, 100% 0%, 
+
+                99% 25%, 100% 50%, 98% 75%, 100% 100%, 85% 99%, 70% 100%, 50% 97%, 30% 100%, 0% 100%, 
+
+                1% 75%, 0% 50%, 2% 25%
+
+            );
+
+        }
+
+
+
+        /* Скрещенные револьверы (символы) */
+
+        .guns-decor {
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+
+        }
+
+
+
+        h1 {
+
+            font-family: 'Ewert', serif; /* Максимально дикий ковбойский шрифт */
+
+            font-size: 3.8rem;
+
+            margin: 10px 0;
+
+            color: #731a10;
+
+            text-shadow: 2px 2px 0px #f7e6cc, 5px 5px 0px #380d08;
+
+            letter-spacing: 3px;
+
+        }
+
+
+
+        h2 {
+
+            font-family: 'Rye', serif;
+
+            font-size: 2.2rem;
+
+            color: #4a2a0c;
+
+            margin-top: 50px;
+
+            border-bottom: 3px double #4a2a0c;
+
+            display: inline-block;
+
+            padding-bottom: 5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+
+        .subtitle {
+
+            font-family: 'Rye', serif;
+
+            font-size: 1.3rem;
+
+            color: #593b1d;
+
+            margin-bottom: 40px;
+
+            text-transform: uppercase;
+
+        }
+
+
+
+        /* Стилизация старых укороченных линий */
+
+        .western-delimiter {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 40px 0;
+
+        }
+
+        .western-delimiter::before, .western-delimiter::after {
+
+            content: '';
+
+            flex: 1;
+
+            height: 3px;
+
+            background: linear-gradient(to right, transparent, #4a2a0c, transparent);
+
+        }
+
+        .western-delimiter span {
+
+            margin: 0 15px;
+
+            font-size: 24px;
+
+        }
+
+
+
+        /* Секретные координаты — Таблица объявлений шерифа */
+
+        .info-board {
+
+            background: rgba(0, 0, 0, 0.04);
+
+            border: 3px dashed #731a10;
+
+            padding: 25px;
+
+            margin: 40px 0;
+
+            transform: rotate(0.5deg);
+
+        }
+
+
+
+        .info-line {
+
+            font-size: 1.3rem;
+
+            margin: 15px 0;
+
+            text-align: left;
+
+            border-bottom: 1px dotted #4a2a0c;
+
+            padding-bottom: 5px;
+
+        }
+
+        .info-line strong {
+
+            color: #731a10;
+
+            font-family: 'Rye', serif;
+
+        }
+
+
+
+        /* Кричащее объявление дресс-кода в стиле "Внимание преступникам!" */
+
+        .law-notice {
+
+            background-color: #731a10;
+
+            color: #e6caa3;
+
+            padding: 30px;
+
+            border: 4px ridge #e6caa3;
+
+            margin: 40px 0;
+
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+
+            transform: rotate(-1deg);
+
+        }
+
+        .law-notice h3 {
+
+            font-family: 'Rye', serif;
+
+            margin: 0 0 15px 0;
+
+            font-size: 1.8rem;
+
+            color: #e6caa3;
+
+            text-shadow: 2px 2px 0 #000;
+
+        }
+
+
+
+        /* --- БАНДА В СБОРЕ (Доски объявлений) --- */
+
+        .saloon-wall {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
+            gap: 30px;
+
+            margin: 40px 0;
+
+        }
+
+
+
+        .wanted-card {
+
+            background: #f0dec1;
+
+            padding: 15px;
+
+            border: 2px solid #593b1d;
+
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            /* Эффект старого выцветшего фото */
+
+            filter: sepia(0.6) contrast(1.1) brightness(0.9);
+
+            /* Анимация покачивания как от ветра */
+
+            transform-origin: top center;
+
+            animation: swing 4s ease-in-out infinite alternate;
+
+        }
+
+        /* Разные карточки качаются немного вразнобой */
+
+        .saloon-wall div:nth-child(2) .wanted-card { animation-delay: -1s; }
+
+        .saloon-wall div:nth-child(3) .wanted-card { animation-delay: -2s; }
+
+
+
+        @keyframes swing {
+
+            0% { transform: rotate(-1.5deg); }
+
+            100% { transform: rotate(1.5deg); }
+
+        }
+
+
+
+        .wanted-card:hover {
+
+            filter: sepia(0.1) contrast(1);
+
+            transform: scale(1.05) translateY(-5px) rotate(0deg) !important;
+
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+
+            z-index: 5;
+
+        }
+
+
+
+        .wanted-card::before {
+
+            content: '★ WANTED ★';
+
+            display: block;
+
+            font-family: 'Rye', serif;
+
+            color: #731a10;
+
+            font-size: 1.1rem;
+
+            margin-bottom: 10px;
+
+        }
+
+
+
+        .photo-frame {
+
+            border: 4px solid #2b1a09;
+
+            height: 240px;
+
+            overflow: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        .photo-frame img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0.85; /* Эффект старой матовой бумаги */
+
+        }
+
+
+
+        .card-name {
+
+            font-family: 'Rye', serif;
+
+            font-size: 1.3rem;
+
+            margin: 12px 0 2px 0;
+
+            color: #2b1a09;
+
+        }
+
+
+
+        /* --- МОДАЛЬНОЕ ОКНО ДОСЬЕ --- */
+
+        .sheriff-modal {
+
+            position: fixed;
+
+            top: 0; left: 0; width: 100%; height: 100%;
+
+            background: rgba(0,0,0,0.9);
+
+            display: none;
+
+            justify-content: center;
+
+            align-items: center;
+
+            z-index: 9999;
+
+            padding: 20px;
+
+        }
+
+
+
+        .dossier-box {
+
+            background-color: #f0dec1;
+
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+
+            border: 10px double #731a10;
+
+            padding: 40px 30px;
+
+            max-width: 500px;
+
+            width: 100%;
+
+            text-align: center;
+
+            box-shadow: 0 0 40px #000;
+
+            position: relative;
+
+        }
+
+
+
+        .dossier-title {
+
+            font-family: 'Ewert', serif;
+
+            color: #731a10;
+
+            font-size: 2rem;
+
+            margin: 0;
+
+        }
+
+
+
+        .reward-tag {
+
+            font-family: 'Rye', serif;
+
+            background: #731a10;
+
+            color: #f0dec1;
+
+            padding: 10px;
+
+            font-size: 1.4rem;
+
+            margin: 20px 0;
+
+            letter-spacing: 2px;
+
+        }
+
+
+
+        .close-dossier {
+
+            position: absolute;
+
+            top: 10px; right: 20px;
+
+            font-size: 35px;
+
+            cursor: pointer;
+
+            color: #731a10;
+
+            font-weight: bold;
+
+        }
+
+
+
+        /* Интерактивная карта */
+
+        .map-frame {
+
+            border: 8px solid #4a2a0c;
+
+            margin: 30px 0;
+
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+
+        }
+
+
+
+        /* Кнопка "ПОДТВЕРДИТЬ ЯВКУ" как золотой слиток / старая бляха */
+
+        .gold-button {
+
+            display: inline-block;
+
+            background: linear-gradient(135deg, #c48c31, #805510);
+
+            color: #fff;
+
+            font-family: 'Rye', serif;
+
+            font-size: 1.4rem;
+
+            padding: 18px 50px;
+
+            text-decoration: none;
+
+            border: 3px solid #f0dec1;
+
+            text-shadow: 2px 2px 2px #000;
+
+            margin-top: 30px;
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+            transition: all 0.2s ease;
+
+            cursor: pointer;
+
+        }
+
+
+
+        .gold-button:hover {
+
+            background: linear-gradient(135deg, #731a10, #380d08);
+
+            transform: scale(1.05);
+
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+
+        }
+
+
+
+        @media (max-width: 600px) {
+
+            h1 { font-size: 2.2rem; }
+
+            .poster { padding: 40px 15px; }
+
+            body { font-size: 16px; }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <!-- Бутафорские дыры от пуль на фоне -->
+
+        <div class="bullet-hole bh1"></div>
+
+        <div class="bullet-hole bh2"></div>
+
+        <div class="bullet-hole bh3"></div>
+
+
+
+        <div class="poster">
+
+            
+
+            <div class="guns-decor">⚔️</div>
+
+            <h1>ВНИМАНИЕ!</h1>
+
+            <div class="subtitle">Разыскивается банда отчаянных гостей на День Рождения</div>
+
+            
+
+            <div class="western-delimiter"><span>🌵</span></div>
+
+            
+
+            <p style="font-size: 1.25rem; line-height: 1.8; max-width: 650px; margin: 0 auto; font-weight: bold;">
+
+                «Седлайте коней, заряжайте револьверы весельем! Старый округ Костыши содрогнется. Надвигается празднование, какого эти земли еще не видели!»
+
+            </p>
+
+
+
+            <div class="western-delimiter"><span>⭐</span></div>
+
+
+
+            <h2>Ориентиры и Сроки</h2>
+
+            
+
+            <div class="info-board">
+
+                <div class="info-line"><strong>🤠 МЕСТО КЛЮЧЕВОЙ СБОЙКИ:</strong> деревня Костыши, Главный Салун</div>
+
+                <div class="info-line"><strong>📅 ДАТА НАЛЁТА:</strong> 27 июня 2026 года</div>
+
+                <div class="info-line"><strong>⏰ ВРЕМЯ Х:</strong> Ровно в 12:00 (Полдень. Опоздавшие чистят конюшню)</div>
+
+            </div>
+
+
+
+            <!-- Суровый Кодекс Дресс-кода -->
+
+            <div class="law-notice">
+
+                <h3>📜 ЗАКОН ДИКОГО ЗАПАДА</h3>
+
+                <p style="font-size: 1.2rem; margin: 0;">
+
+                    Вход без ШЛЯПЫ строго запрещен! Местный шериф имеет право арестовать любого, кто явится с непокрытой головой. Джинса, кожа, сапоги со шпорами и клетчатые рубахи дают вам +10 к уважению в баре!
+
+                </p>
+
+            </div>
+
+
+
+            <div class="western-delimiter"><span>💰</span></div>
+
+
+
+            <h2>Их разыскивает Шериф</h2>
+
+            <p style="margin-bottom: 30px;">Нажми на листовку, чтобы прочесть досье бандита:</p>
+
+
+
+            <div class="saloon-wall">
+
+                <!-- Карточка 1 -->
+
+                <div onclick="openDossier('ГЛАВАРЬ БАНДЫ', 'АЛЕКСАНДР «Быстрый Билли»', '$100 000 в золоте', 'Организатор дерзкого налета на Костыши по случаю своего Дня Рождения. Особо опасен: заставляет всех пить виски и безудержно танцевать до утра. Брать тепленьким!')">
+
+                    <div class="wanted-card">
+
+                        <div class="photo-frame">
+
+                            <img src="https://images.unsplash.com/photo-1590012357919-49c4946d0a7a?w=500" alt="Именинник">
+
+                        </div>
+
+                        <div class="card-name">Александр</div>
+
+                        <div style="color: #731a10; font-size: 0.9rem;">«Быстрый Билли»</div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Карточка 2 -->
+
+                <div onclick="openDossier('ОПАСНАЯ ЛЕДИ', 'МАРИЯ «Каламити Джейн»', '50 голов скота', 'Метко стреляет колкими шутками, способна перепить ковбоя средней тяжести. Особые приметы: грациозно поправляет шляпу перед тем, как забрать весь банк в покер.')">
+
+                    <div class="wanted-card">
+
+                        <div class="photo-frame">
+
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500" alt="Гость 1">
+
+                        </div>
+
+                        <div class="card-name">Мария</div>
+
+                        <div style="color: #731a10; font-size: 0.9rem;">«Хитрая Маша»</div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Карточка 3 -->
+
+                <div onclick="openDossier('КОНТРАБАНДИСТ', 'ДМИТРИЙ «Бешеный Дог»', 'Сундук патронов', 'Поставляет лучшее настроение в салун. Разыскивается за кражу покоя во всех окрестных штатах и за мастерское рассказывание ковбойских баек у костра.')">
+
+                    <div class="wanted-card">
+
+                        <div class="photo-frame">
+
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500" alt="Гость 2">
+
+                        </div>
+
+                        <div class="card-name">Дмитрий</div>
+
+                        <div style="color: #731a10; font-size: 0.9rem;">«Дядя Дима»</div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="western-delimiter"><span>🗺️</span></div>
+
+
+
+            <h2>Карта для твоего мустанга</h2>
+
+            <p>Держи курс по старой пыльной тропе до упора:</p>
+
+            
+
+            <div class="map-frame">
+
+                <iframe src="https://yandex.ru/map-widget/v1/?text=деревня%20Костыши&z=14" width="100%" height="420" frameborder="0" allowfullscreen="true" style="display:block;"></iframe>
+
+            </div>
+
+
+
+            <div class="western-delimiter"><span>✉️</span></div>
+
+
+
+            <p style="font-size: 1.2rem; font-weight: bold; color: #731a10;">Черкни весточку, ковбой, прискачешь ли ты на наш костер?</p>
+
+            
+
+            <a href="https://t.me/your_username" target="_blank" class="gold-button">ПОДТВЕРДИТЬ ЯВКУ</a>
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ТЕМАТИЧЕСКОЕ ОКНО С ДОСЬЕ -->
+
+    <div class="sheriff-modal" id="dossierModal" onclick="closeDossier()">
+
+        <div class="dossier-box" onclick="event.stopPropagation()">
+
+            <span class="close-dossier" onclick="closeDossier()">&times;</span>
+
+            <div class="dossier-title" id="dossierRole">СТАТУС</div>
+
+            <div id="dossierName" style="font-family: 'Rye', serif; font-size: 1.8rem; margin: 10px 0; color: #2b1a09;">Имя</div>
+
+            <div class="reward-tag" id="dossierReward">НАГРАДА: $000</div>
+
+            <p id="dossierDesc" style="line-height: 1.6; text-align: left; font-size: 1.1rem; color: #2b1a09; border-top: 2px dashed #731a10; padding-top: 15px;"></p>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        function openDossier(role, name, reward, desc) {
+
+            document.getElementById('dossierRole').innerText = role;
+
+            document.getElementById('dossierName').innerText = name;
+
+            document.getElementById('dossierReward').innerText = "НАГРАДА: " + reward;
+
+            document.getElementById('dossierDesc').innerText = desc;
+
+            document.getElementById('dossierModal').style.display = 'flex';
+
+        }
+
+
+
+        function closeDossier() {
+
+            document.getElementById('dossierModal').style.display = 'none';
+
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
